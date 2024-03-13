@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from sgcarmart import *
+from helpers.sgcarmart import *
 
 listingurl = 'https://www.sgcarmart.com/used_cars/info.php?ID=1276567&DL=4457'
 listingurl2 = 'https://www.sgcarmart.com/used_cars/info.php?ID=1265139&DL=1032&utm_content=SLeligible'
