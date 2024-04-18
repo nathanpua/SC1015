@@ -6,9 +6,7 @@ this is our SC1015 mini project which focuses on analysing the used car market i
 We focused on data retrieved from Sgcarmart.com which is the largest website for used car listings in Singapore. For detailed walkthrough, please view the source code in order from:
 
 1.Data Collection  
-
 2.Data Cleaning and Visualisation  
-
 3.Regession Analysis
 
 ### CONTRIBUTORS
