@@ -15,29 +15,24 @@ We focused on data retrieved from Sgcarmart.com which is the largest website for
 ---
 
 
-### PROBLEM DEFINITION
----
+### PROBLEM DEFINITION---
 * are we able to predict the price of a car based on its attributes?
 * is a car worth buying? by comparing predicted and actual price
 * Whcih model should we use to predict the price of a car?
 
-### MODELS USED
----
+### MODELS USED---
 1. Linear Regression  
 2. Random Forest Regression  
 3. K-Nearest-Neighbours Regression
 4. Neural Network Regression
 
-### CONCLUSION
----
+### CONCLUSION---
 * 
 
-### Insights gained from this project
----
+### Insights gained from this project---
 * Web scraping with beautifulsoup to scrape data from websites
 * Advanced regression techniques
 
-### References
----
+### References---
 
 
