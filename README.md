@@ -1,6 +1,4 @@
 # USED CAR RECOMMENDATION SYSTEM IN SINGAPORE
----
-
 
 ### ABOUT
 ---
@@ -32,12 +30,12 @@ We focused on data retrieved from Sgcarmart.com which is the largest website for
 ---
 * 
 
-### Insights gained from this project
+### INSIGHTS GAINED FROM THIS PROJECT
 ---
 * Web scraping with beautifulsoup to scrape data from websites
 * Advanced regression techniques
 
-### References
+### REFERENCES
 ---
 
 
