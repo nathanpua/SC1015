@@ -17,7 +17,7 @@ We focused on data retrieved from Sgcarmart.com which is the largest website for
 ---
 * are we able to predict the price of a car based on its attributes?
 * is a car worth buying? by comparing predicted and actual price
-* Whcih model should we use to predict the price of a car?
+* Which model should we use to predict the price of a car?
 
 ### MODELS USED
 ---
