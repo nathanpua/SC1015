@@ -23,9 +23,9 @@ We focused on data retrieved from Sgcarmart.com which is the largest website for
 3. K-Nearest-Neighbours Regression
 4. Neural Network Regression
 
-And 2 more models that we did not present:  
-5. Polynomial Regression (Degree 2)  
-6. Elastic Net Regression  
+ And 2 more models that we did not present:  
+ 5. Polynomial Regression (Degree 2)  
+ 6. Elastic Net Regression  
 
 ### CONCLUSION
 ---
