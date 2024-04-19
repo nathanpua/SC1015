@@ -9,13 +9,10 @@ We focused on data retrieved from Sgcarmart.com which is the largest website for
 2. [Data Cleaning and Visualisation](https://github.com/nathanpua/SC1015/blob/main/EDA.ipynb)
 3. [Regession Analysis](https://github.com/nathanpua/SC1015/blob/main/regression.ipynb)
 
-### CONTRIBUTORS
----
-
-
 ### PROBLEM DEFINITION
 ---
-* are we able to predict the price of a car based on its attributes?
+* Are we able to predict the price of a car based on its attributes?
+* What variables should we use to determine the price of a car?
 * is a car worth buying? by comparing predicted and actual price
 * Which model should we use to predict the price of a car?
 
@@ -26,14 +23,27 @@ We focused on data retrieved from Sgcarmart.com which is the largest website for
 3. K-Nearest-Neighbours Regression
 4. Neural Network Regression
 
+And 2 more models that we did not present:
+5. Polynomial Regression (Degree 2)
+6. Elastic Net Regression
+
 ### CONCLUSION
 ---
-* 
+* Most of our models achieved a good explained variance scores (> 0.90)
+* We explored many different regression models
+* The worst performing model was the K-Nearest-Neighbours Regression. This is because the model depends greatly on distances between points, and since we had high dimensions due to many predictor variables, the distances were less representative resulting in poorer explained variance and RMSE
+* Neural Network regression came in second place, close to our best model which was Random forest regression. We did not fine tune parameters for the Neural network regression so it could possibly have been the best model.
+* We decided to use the random forest regression model to build the recommendation system which predicted car prices and compared them to the actual prices to find good deals. [Here is the list of recommmended cars based on our dataset](https://github.com/nathanpua/SC1015/blob/main/datasets/reccomended.csv)
 
 ### INSIGHTS GAINED FROM THIS PROJECT
 ---
 * Web scraping with beautifulsoup to scrape data from websites
-* Advanced regression techniques
+* Searching in the HTML for the required variables and writing functions to extract these data and dealing with errors as the HTML was not consistent in some of the listings
+* Learnt about random forest regression
+* Learnt about K-Nearest-Neighbours regression
+* Learnt Neural Networks, Keras and Tensorflow
+* Utilising the K-Folds cross validation method to achieve more objective regression metrics
+
 
 ### REFERENCES
 ---
