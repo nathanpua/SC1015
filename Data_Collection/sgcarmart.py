@@ -5,8 +5,6 @@ import numpy as np
 import time
 from datetime import datetime
 
-# All retriever functions take a parsed individual car lsting url and returns a desired attribute named after the function
-
 
 # Brand Retriever Function
 def brand_retrieval(parsed_url):
@@ -16,17 +14,14 @@ def brand_retrieval(parsed_url):
 
 # Price Retriever Function
 def price_error_handling(data_value):
-    # Try-Exception error handling
-    
-    try:   # First try to deal with values higher than 1000
-        price = data_value[1]  # will fail on IndexError if retrieves ['na'] scenario
-        price = int(price.split(',')[0] + price.split(',')[1]) # Will fail on IndexError if tries to split '900' with a ',' in ['',900]
-        
-    except IndexError:  # Dealing with ['na'] and ['', 900'] scenarios
+    try:   
+        price = data_value[1]  
+        price = int(price.split(',')[0] + price.split(',')[1]) 
+    except IndexError:  
         try: 
-            price = int(data_value[1]) # Will fail on IndexError if ['na'] scenario
-        except IndexError:  # Deals with ['na'] scenarios
-            price = np.nan  # Stores NA values as nan
+            price = int(data_value[1]) 
+        except IndexError: 
+            price = np.nan  
     
     return price
 
@@ -54,7 +49,7 @@ def depreciation_value_per_year_error_handler(data_value):
         data_value = data_value[1].split('/yr')
         try:                 
             desired_value = int(data_value[0].split(',')[0] +\
-                                data_value[0].split(',')[1]) # Will fail on IndexError if tries to split '900' with a ',' in ['900','']
+                                data_value[0].split(',')[1])
         except IndexError: 
             desired_value = int(data_value[0])
         
@@ -67,23 +62,21 @@ def depreciation_value_per_year_retrieval(parsed_listing_url):
 
 # Road Tax Per Year Retriever
 def road_tax_error_handler(string_data):
-    if '/yr' in string_data: # Only takes in scenarios that are not NA
+    if '/yr' in string_data: 
         try:
-            # Removes '$" character and splits string_data into a list of ['', 1,000] or ['', 900]
             road_tax_per_year = \
             string_data.replace('/yr','').strip().split('$') 
 
-            # Accesses the second item in the list
             road_tax_per_year = road_tax_per_year[1] 
 
 
             road_tax_per_year = int(road_tax_per_year.split(',')[0] +\
-                                    road_tax_per_year.split(',')[1])  # Will fail on IndexError if value is above 1000
+                                    road_tax_per_year.split(',')[1]) 
 
-        except IndexError: # Handles values that are below 1000. (i.e. ['',900])
+        except IndexError: 
             road_tax_pear_year = int(road_tax_per_year[1])
 
-    else: # Deals with 'NA' scenario
+    else: 
         road_tax_per_year = np.nan
     
     return road_tax_per_year
@@ -109,21 +102,7 @@ def days_of_coe_retrieval(parsed_listing_url):
 
 
 # Define a function to calculate days of COE left
-def yr_mm_dd_cleaner(str1):
-    """Accepts a string that may or may include the elements yr mths days and 
-    converts the whole string into number of days.
-    ----
-    Input: single string
-    output: number of days in integer form
-    ----
-    Example string inputs:
-    - 4yrs 2mths 23days
-    - 5yrs
-    - 2 mths 23 days
-    - 50 days
-    """
-    
-    # Convert days_of_coe_left_yy_mm_dd to days    
+def yr_mm_dd_cleaner(str1):   
     year_index = str1.find('yr')
     if year_index == -1:
         year = 0
@@ -150,13 +129,13 @@ def yr_mm_dd_cleaner(str1):
 
 # Mileage Retriever
 def mileage_error_handler(data_value):
-    if len(data_value) < 2:  # Deals with ['na'] scenarios
-        mileage_km = np.nan  # Stores NA values as nan
+    if len(data_value) < 2:  
+        mileage_km = np.nan  
 
     else:  
         try:                 
             mileage_km = int(data_value[0].strip().split(',')[0] + data_value[0].strip().split(',')[1])
-        except IndexError: # Will fail on IndexError if tries to split '900' with a ',' in ['',900]
+        except IndexError: 
             mileage_km = int(data_value[0].strip())
     
     return mileage_km
@@ -186,7 +165,6 @@ def transmission_retrieval(parsed_listing_url):
 
 # Deregistration Value Retriever
 def dereg_value_retrieval(parsed_listing_url):
-    # Splits into ['NA'], or ['$11,026', 'as', 'of', 'today', '(change)'] or ['$900', 'as', 'of', 'today', '(change)']
     data_value = parsed_listing_url.find_all(class_='row_info')[2].text.strip().split() 
     
     dereg_value_from_scrape_date = dereg_value_error_handler(data_value)
@@ -194,15 +172,15 @@ def dereg_value_retrieval(parsed_listing_url):
     
 
 def dereg_value_error_handler(data_value):
-    if len(data_value) < 2:  # Deals with ['NA'] scenario
+    if len(data_value) < 2:  
         dereg_value_from_scrape_date = np.nan
 
     else: 
-        data_value = data_value[0].split('$')[1] # Puts input into '11,026' or '900' format
+        data_value = data_value[0].split('$')[1] 
         try:                 
             dereg_value_from_scrape_date = \
             int(data_value.split(',')[0] +\
-                data_value.split(',')[1]) # Will fail on IndexError if tries to split '900' with a ',' in ['',900]
+                data_value.split(',')[1]) 
         except IndexError: 
             dereg_value_from_scrape_date = int(data_value.strip())
 
@@ -211,13 +189,13 @@ def dereg_value_error_handler(data_value):
 
 # Open Market Value Retriever
 def omv_error_handler(data_value):
-    if len(data_value) < 2:  # deals iwth ['NA'] input
+    if len(data_value) < 2:  
         omv = np.nan
 
     else:
         try:
             omv = int(data_value[1].split(',')[0] +\
-                      data_value[1].split(',')[1])  # Will fail on index error if try to split 900
+                      data_value[1].split(',')[1])  
         except IndexError:
             omv = int(data_value[1])
     return omv
@@ -225,20 +203,19 @@ def omv_error_handler(data_value):
 
 def omv_retrieval(parsed_listing_url):    
     data_value = parsed_listing_url.find_all(class_='row_info')[8].text.split('$') 
-    # Splits data into ['', '21,967'], ['','900'] or ['NA'] format for input into error function
     
     omv = omv_error_handler(data_value)
     return omv     
 
 # ARF Retriever
 def error_handler(data_value):
-    if len(data_value) < 2:  # deals iwth ['NA'] input
+    if len(data_value) < 2:  
         desired_value = np.nan
 
     else:
         try:
             desired_value = int(data_value[1].split(',')[0] +\
-                                data_value[1].split(',')[1])   # Will fail on index error if try to split 900
+                                data_value[1].split(',')[1])   
         except IndexError:
             desired_value = int(data_value[1])
     return desired_value
@@ -251,13 +228,13 @@ def arf_retrieval(parsed_listing_url):
 
 # COE Price retriever 
 def coe_error_handler(data_value):
-    if len(data_value) < 2:  # deals iwth ['NA'] input
+    if len(data_value) < 2:  
         coe_from_scrape_date = np.nan
 
     else:
         try:
             coe_from_scrape_date = int(data_value[1].split(',')[0] +\
-                                       data_value[1].split(',')[1])  # Will fail on index error if try to split 900
+                                       data_value[1].split(',')[1])  
         except IndexError:
             coe_from_scrape_date = int(data_value[1])
     return coe_from_scrape_date
@@ -270,13 +247,13 @@ def coe_retrieval(parsed_listing_url):
 
 # Engine Capacity Retriever
 def engine_capacity_error_handler(data_value):
-    if len(data_value) < 2:  # deals iwth ['NA'] input
+    if len(data_value) < 2:  
         desired_value = np.nan
 
     else:
         try:
             desired_value = int(data_value[0].split(',')[0] +\
-                                       data_value[0].split(',')[1])  # Will fail on index error if try to split 900
+                                       data_value[0].split(',')[1])  
         except IndexError:
             desired_value = int(data_value[0])
     return desired_value
@@ -289,13 +266,13 @@ def engine_capacity_retrieval(parsed_listing_url):
 
 # Curb Weight Retriever
 def curb_weight_error_handler(data_value):
-    if len(data_value) < 2:  # deals iwth ['NA'] input
+    if len(data_value) < 2:  
         desired_value = np.nan
 
     else:
         try:
             desired_value = int(data_value[0].split(',')[0] +\
-                                       data_value[0].split(',')[1])  # Will fail on index error if try to split 900
+                                       data_value[0].split(',')[1])  
         except IndexError:
             desired_value = int(data_value[0])
     return desired_value

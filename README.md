@@ -47,5 +47,13 @@ We focused on data retrieved from Sgcarmart.com which is the largest website for
 
 ### REFERENCES
 ---
+* https://www.sgcarmart.com/used_cars/index.php
+* https://stackoverflow.com/questions/46490626/getting-all-links-from-a-page-beautiful-soup
+* https://realpython.com/beautiful-soup-web-scraper-python/
+* https://medium.com/@nandiniverma78988/neural-network-regression-implementation-and-visualization-in-python-d5893713ed79
+* https://towardsdatascience.com/random-forest-in-python-24d0893d51c0
+* https://aamir07.medium.com/knn-regression-with-python-c11cbc5aa9a8
+* https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html
+
 
 
