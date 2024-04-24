@@ -33,7 +33,9 @@ We focused on data retrieved from Sgcarmart.com which is the largest website for
 * We explored many different regression models
 * The worst performing model was the K-Nearest-Neighbours Regression. This is because the model depends greatly on distances between points, and since we had high dimensions due to many predictor variables, the distances were less representative resulting in poorer explained variance and RMSE
 * Neural Network regression came in second place, close to our best model which was Random forest regression. We did not fine tune parameters for the Neural network regression so it could possibly have been the best model.
-* We decided to use the random forest regression model to build the recommendation system which predicted car prices and compared them to the actual prices to find good deals. [Here is the list of recommmended cars based on our dataset](https://github.com/nathanpua/SC1015/blob/main/datasets/reccomended.csv)
+* We decided to use the random forest regression model to build the recommendation system which predicted car prices and compared them to the actual prices to find good deals. [Here is the list of recommmended cars based on our dataset](https://github.com/nathanpua/SC1015/blob/main/datasets/reccomended.csv)   
+(These listings were taken on 18/4/2024, some cars may have already been sold!)  
+* Top 3 recommended brands are: Nissan, Volkswagen, BMW.
 
 ### INSIGHTS GAINED FROM THIS PROJECT
 ---
